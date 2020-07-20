@@ -1,7 +1,6 @@
 package com.harshit.newsapp;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.lifecycle.MutableLiveData;
 
@@ -16,7 +15,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
 public class RetrofitManager {
-    String URL = "https://newsapi.org/v2/"; // http://newsapi.org/v2/everything?q=bitcoin&sortBy=publishedAt&apiKey=472194e741f64db691a9cc21a70a9370
+    String URL = "https://newsapi.org/v2/";
 
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
             .readTimeout(60, TimeUnit.SECONDS)

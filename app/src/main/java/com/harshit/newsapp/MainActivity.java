@@ -8,8 +8,6 @@ import androidx.viewpager.widget.ViewPager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
@@ -88,28 +86,16 @@ public void run(){
         }
         },500,3000);
 
-//        viewPager.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent intent = new Intent(MainActivity.this,WebActivity.class);
-//                id = i;
-//                intent.putExtra("id",id);
-//                startActivity(intent);
-//            }
-//        });
 
 
-        signOut.setOnClickListener(new View.OnClickListener(){
-@Override
-public void onClick(View v){
-        ob.mAuth.signOut();
-        AuthUI.getInstance().signOut(getApplicationContext());
-        Toast.makeText(MainActivity.this,"Good Bye",Toast.LENGTH_LONG).show();
-        Intent i=new Intent(MainActivity.this,Intro_activity.class);
-        startActivity(i);
-        finish();
-        }
-        });
+        signOut.setOnClickListener(v -> {
+                ob.mAuth.signOut();
+                AuthUI.getInstance().signOut(getApplicationContext());
+                Toast.makeText(MainActivity.this,"Good Bye",Toast.LENGTH_LONG).show();
+                Intent i=new Intent(MainActivity.this,Intro_activity.class);
+                startActivity(i);
+                finish();
+                });
         }
 
 @Override
@@ -117,6 +103,5 @@ protected void onStart(){
         super.onStart();
         viewModel.News().observe(this,NewsObserver);
         }
-
 
         }

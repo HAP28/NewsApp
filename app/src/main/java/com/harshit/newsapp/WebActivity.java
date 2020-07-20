@@ -1,19 +1,12 @@
 package com.harshit.newsapp;
 
-import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
-import android.os.Process;
-import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class WebActivity extends Activity {
 
@@ -23,7 +16,6 @@ public class WebActivity extends Activity {
     Activity activity;
 
     @SuppressLint("SetJavaScriptEnabled")
-//    @SuppressLint("NewApi")
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

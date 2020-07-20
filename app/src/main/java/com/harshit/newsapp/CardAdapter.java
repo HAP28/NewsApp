@@ -60,13 +60,10 @@ public class CardAdapter extends PagerAdapter {
         container.addView(view,0);
 
 
-        view.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(context,WebActivity.class);
-                intent.putExtra("url",MainActivity.article.get(position).getUrl());
-                context.startActivity(intent);
-            }
+        view.setOnClickListener(v -> {
+            Intent intent = new Intent(context,WebActivity.class);
+            intent.putExtra("url",MainActivity.article.get(position).getUrl());
+            context.startActivity(intent);
         });
 
         return view;
