@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "649733792895",
+    "firebase_url": "https://newsapp-560e1.firebaseio.com",
+    "project_id": "newsapp-560e1",
+    "storage_bucket": "newsapp-560e1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:649733792895:android:36b3163565add32c704b4a",
+        "android_client_info": {
+          "package_name": "com.harshit.newsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "649733792895-on139dkpoclphtre7o0bfglvgsc976b6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAwJdBHkCwSWp_nRf4AEmwBiQSlKsp234Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "649733792895-on139dkpoclphtre7o0bfglvgsc976b6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
