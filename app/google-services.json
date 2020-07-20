@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "649733792895-o9la8mmcgf9j7p182t0fife9k0ik7612.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.harshit.newsapp",
+            "certificate_hash": "f60a273311835c993eccf12e6f3cac8ac4b039d0"
+          }
+        },
+        {
           "client_id": "649733792895-djjg8bl6eps9jjs5j98egfnsanegvk85.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {

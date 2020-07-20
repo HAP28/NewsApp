@@ -16,7 +16,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
 
 public class RetrofitManager {
-    String URL = "http://newsapi.org/v2/";
+    String URL = "https://newsapi.org/v2/";
 
     OkHttpClient.Builder httpClient = new OkHttpClient.Builder()
             .readTimeout(60, TimeUnit.SECONDS)
@@ -30,7 +30,7 @@ public class RetrofitManager {
     Retrofit retrofit = builder.client(httpClient.build()).build();
 
     public interface RetrofitApi {
-        @GET("everything?q=bitcoin&apiKey=472194e741f64db691a9cc21a70a9370")
+        @GET("everything?q=bitcoin&sortBy=publishedAt&apiKey=472194e741f64db691a9cc21a70a9370")
         Call<ResponseAPI> getNews();
     }
 
@@ -44,14 +44,14 @@ public class RetrofitManager {
             @Override
             public void onResponse(Call<ResponseAPI> call, Response<ResponseAPI> response) {
                 if (response.isSuccessful()) {
-                    Log.v("ans","Done");
+                    Log.v("RetrofitManagr","Done");
                     newsData.postValue(response.body());
                 }
             }
 
             @Override
             public void onFailure(Call<ResponseAPI> call, Throwable t) {
-                Log.v("something went wrong","something went wrong");
+                Log.v("RetrofitManager","something went wrong");
             }
         });
         return newsData;

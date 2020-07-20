@@ -13,7 +13,7 @@ public class ViewModel extends AndroidViewModel {
     private RetrofitManager retrofitManager = new RetrofitManager();
     private MediatorLiveData<ResponseAPI> responseAPIMediatorLiveData = new MediatorLiveData<>();
 
-    public ViewModel(@NonNull Application application) {
+    public ViewModel(Application application) {
         super(application);
         this.application = application;
     }
@@ -22,13 +22,9 @@ public class ViewModel extends AndroidViewModel {
         return responseAPIMediatorLiveData;
     }
     public void getNews() {
-        responseAPIMediatorLiveData.addSource(retrofitManager.getNews(), new Observer<ResponseAPI>() {
-
-            @Override
-            public void onChanged(ResponseAPI responseAPI) {
-                if(responseAPI != null) {
-                    responseAPIMediatorLiveData.setValue(responseAPI);
-                }
+        responseAPIMediatorLiveData.addSource(retrofitManager.getNews(), responseAPI -> {
+            if(responseAPI != null) {
+                responseAPIMediatorLiveData.setValue(responseAPI);
             }
         });
     }
