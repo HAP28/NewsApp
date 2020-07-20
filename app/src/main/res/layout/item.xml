@@ -7,10 +7,11 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="500dp"
+        android:layout_gravity="center"
+        android:padding="20dp"
         app:cardCornerRadius="20dp"
-        android:layout_margin="20dp"
-        android:background="@color/colorGray">
+        android:layout_margin="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -30,19 +31,32 @@
                 android:layout_below="@+id/image"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
+                android:layout_margin="5dp"
+                android:textColor="@color/colorPrimary"
                 android:fontFamily="@font/poppins_semibold"
                 android:textSize="16sp"
                 android:textStyle="bold" />
             <TextView
-                android:id="@+id/desc"
+                android:id="@+id/src"
                 android:layout_below="@+id/title_card"
-                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:layout_marginBottom="10dp"
-                android:maxLines="3"
+                android:layout_marginLeft="10dp"
                 android:textSize="16sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_below="@+id/src"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="10dp"
+                android:textSize="12sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+
 
 
         </RelativeLayout>

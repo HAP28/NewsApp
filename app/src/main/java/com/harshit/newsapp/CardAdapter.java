@@ -1,6 +1,7 @@
 package com.harshit.newsapp;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -43,17 +44,30 @@ public class CardAdapter extends PagerAdapter {
         View view = layoutInflater.inflate(R.layout.item, container, false);
 
         ImageView imageView;
-        TextView title, desc;
+        TextView title, src,date;
 
         imageView = view.findViewById(R.id.image);
         title = view.findViewById(R.id.title_card);
-        desc = view.findViewById(R.id.desc);
+        src = view.findViewById(R.id.src);
+        date = view.findViewById(R.id.date);
 
         Picasso.get().load(Uri.parse(list.get(position).getImage())).into(imageView);
         title.setText(list.get(position).getTitle());
-        desc.setText(list.get(position).getDec());
+        src.setText(list.get(position).getSrc());
+        date.setText(list.get(position).getDate());
+
 
         container.addView(view,0);
+
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context,WebActivity.class);
+                intent.putExtra("url",MainActivity.article.get(position).getUrl());
+                context.startActivity(intent);
+            }
+        });
 
         return view;
     }

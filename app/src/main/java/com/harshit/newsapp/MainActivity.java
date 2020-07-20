@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -29,70 +30,93 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     CardAdapter cardAdapter;
     List<CardModel> list;
-    List<Article> article = new ArrayList<>();
+    public static List<Article> article = new ArrayList<>();
     int currentPage = 0;
     private ViewModel viewModel;
+    int x = 0, i = 0;
 
     private Observer<ResponseAPI> NewsObserver = new Observer<ResponseAPI>() {
         @Override
         public void onChanged(ResponseAPI responseAPI) {
             if (responseAPI != null) {
                 article = responseAPI.getArticles();
-                for(int i=2;i<7;i++) {
-                    list.add(new CardModel(article.get(i).getUrlToImage(), article.get(i).getTitle(), article.get(i).getDescription()));
+
+
+                while (x < 5) {
+                    Random r = new Random();
+                    do {
+                        i = r.nextInt(20);
+                    } while (list.contains(new CardModel(article.get(i).getUrlToImage(), article.get(i).getTitle(), "Source: " + article.get(i).getSource().getName(), "Date: " + article.get(i).getPublishedAt())));
+                if (article.get(i).getUrl() != null) {
+                    list.add(new CardModel(article.get(i).getUrlToImage(), article.get(i).getTitle(), "Source: " + article.get(i).getSource().getName(), "Date: " + article.get(i).getPublishedAt()));
+                    x++;
+                    i++;
                 }
-
-                cardAdapter = new CardAdapter(list, MainActivity.this);
-                viewPager.setAdapter(cardAdapter);
             }
+
+            cardAdapter = new CardAdapter(list, MainActivity.this);
+            viewPager.setAdapter(cardAdapter);
         }
-    };
+    }
+};
 
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
+@Override
+protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button signOut = (Button) findViewById(R.id.sign_out_btn);
-        ob = new Intro_activity();
-        ob.mAuth = FirebaseAuth.getInstance();
-        list = new ArrayList<>();
-        viewModel = new ViewModelProvider(this).get(ViewModel.class);
-        viewPager = findViewById(R.id.view_pager);
+        Button signOut=findViewById(R.id.sign_out_btn);
+        ob=new Intro_activity();
+        ob.mAuth=FirebaseAuth.getInstance();
+        list=new ArrayList<>();
+        viewModel=new ViewModelProvider(this).get(ViewModel.class);
+        viewPager=findViewById(R.id.view_pager);
         viewModel.getNews();
 
-        final Handler handler = new Handler();
-        final Runnable Update = () -> {
-            if (currentPage == 5) {
-                currentPage = 0;
-            }
-            viewPager.setCurrentItem(currentPage++, true);
+final Handler handler=new Handler();
+final Runnable Update=()->{
+        if(currentPage==5){
+        currentPage=0;
+        }
+        viewPager.setCurrentItem(currentPage++,true);
         };
-        timer = new Timer();
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                handler.post(Update);
-            }
-        }, 500, 3000);
+        timer=new Timer();
+        timer.schedule(new TimerTask(){
+@Override
+public void run(){
+        handler.post(Update);
+        }
+        },500,3000);
+
+//        viewPager.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(MainActivity.this,WebActivity.class);
+//                id = i;
+//                intent.putExtra("id",id);
+//                startActivity(intent);
+//            }
+//        });
 
 
-        signOut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ob.mAuth.signOut();
-                AuthUI.getInstance().signOut(getApplicationContext());
-                Toast.makeText(MainActivity.this, "Good Bye", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(MainActivity.this, Intro_activity.class);
-                startActivity(i);
-                finish();
-            }
+        signOut.setOnClickListener(new View.OnClickListener(){
+@Override
+public void onClick(View v){
+        ob.mAuth.signOut();
+        AuthUI.getInstance().signOut(getApplicationContext());
+        Toast.makeText(MainActivity.this,"Good Bye",Toast.LENGTH_LONG).show();
+        Intent i=new Intent(MainActivity.this,Intro_activity.class);
+        startActivity(i);
+        finish();
+        }
         });
-    }
-    @Override
-    protected void onStart() {
+        }
+
+@Override
+protected void onStart(){
         super.onStart();
         viewModel.News().observe(this,NewsObserver);
-    }
+        }
 
-}
+
+        }

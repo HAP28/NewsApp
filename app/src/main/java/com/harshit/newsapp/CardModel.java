@@ -1,15 +1,22 @@
 package com.harshit.newsapp;
 
-import android.widget.ImageView;
-
 public class CardModel {
     private String image;
-    private String title,dec;
+    private String title, src, date;
 
-    public CardModel(String image, String title, String dec) {
+    public CardModel(String image, String title, String src, String date) {
         this.image = image;
         this.title = title;
-        this.dec = dec;
+        this.src = src;
+        this.date = date;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 
     public String getImage() {
@@ -28,11 +35,11 @@ public class CardModel {
         this.title = title;
     }
 
-    public String getDec() {
-        return dec;
+    public String getSrc() {
+        return src;
     }
 
-    public void setDec(String dec) {
-        this.dec = dec;
+    public void setSrc(String src) {
+        this.src = src;
     }
 }
